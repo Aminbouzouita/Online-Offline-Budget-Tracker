@@ -69,17 +69,4 @@ function checkDatabase() {
     // console.log(getAll.result);
   };
 }
-function clearDb() {
-  const db = request.result;
-  const transaction = db.transaction(["pending"], "readwrite");
-  // access your pending object store
-  const objectStore = transaction.objectStore("pending");
-  // clear all items in your store
-  const clearReq = objectStore.clear();
-  clearReq.onsuccess = function(e) {
-    console.log("IndexedDB has been cleared!");
-  };
-}
-document.querySelector("#clear-btn").addEventListener("click", clearDb);
-// listen for app coming back online
 window.addEventListener("online", checkDatabase);
